@@ -1,0 +1,173 @@
+.main-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  background-color: #f0f2f5;
+  padding: 20px;
+}
+
+.dashboard {
+  background: white;
+  max-width: 960px;
+  width: 100%;
+  border-radius: 24px;
+  padding: 30px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-banner {
+  background: linear-gradient(to right, #4f46e5, #9333ea);
+  color: white;
+  border-radius: 24px;
+  padding: 20px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.mood-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+}
+
+.mood-card {
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.3s;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+}
+
+.mood-card:hover {
+  transform: scale(1.05);
+}
+
+.mood-card .emoji {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.selected {
+  box-shadow: 0 0 0 4px #a5b4fc;
+}
+
+.selected-mood-msg {
+  margin-top: 15px;
+  padding: 10px;
+  background-color: #e0f2fe;
+  border-radius: 12px;
+  text-align: center;
+  color: #0c4a6e;
+  font-weight: bold;
+}
+
+/* Task Styling */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 10px;
+}
+
+.task-list li {
+  padding: 8px 12px;
+  margin-bottom: 6px;
+  background-color: #f3f4f6;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.task-list li:hover {
+  background-color: #e0e7ff;
+}
+
+.task-list li.completed {
+  text-decoration: line-through;
+  background-color: #d1fae5;
+  color: #4b5563;
+}
+
+.add-task {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.add-task input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.add-task button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.add-task button:hover {
+  background-color: #2563eb;
+}
+
+/* Progress */
+.progress-bar {
+  height: 20px;
+  background-color: #ddd;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  background: linear-gradient(to right, #10b981, #3b82f6);
+  transition: width 0.4s;
+}
+
+.progress-text {
+  margin-top: 10px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.progress-msg {
+  margin-top: 6px;
+  text-align: center;
+  color: #555;
+}
+
+/* Highlights */
+.highlight-card {
+  display: flex;
+  gap: 12px;
+  padding: 12px;
+  background-color: #f0fdf4;
+  border-radius: 16px;
+  margin-bottom: 10px;
+  align-items: center;
+  font-size: 1.25rem;
+}
+
+.highlight-card div p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: #444;
+}

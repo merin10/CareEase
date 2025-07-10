@@ -63,3 +63,13 @@
   color: #4a90e2;
   text-decoration: none;
 }
+
+.role-select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+

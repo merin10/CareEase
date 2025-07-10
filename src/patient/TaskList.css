@@ -1,0 +1,126 @@
+/* src/components/TaskList.css */
+.task-list-container {
+  grid-column: span 2;
+}
+
+.task-list-card {
+  background-color: white;
+  border-radius: 24px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 24px;
+}
+
+.task-list-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 24px;
+}
+
+.progress-section {
+  margin-bottom: 24px;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.progress-label,
+.progress-count {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-height: 384px;
+  overflow-y: auto;
+}
+
+.task-item {
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #d1d5db;
+  transition: all 0.2s ease;
+}
+
+.task-item.completed {
+  background-color: #f3f4f6;
+  opacity: 0.75;
+  border-color: #d1d5db;
+}
+
+.task-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task-emoji-container {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 12px;
+}
+
+.task-emoji {
+  font-size: 1.125rem;
+}
+
+.task-details {
+  flex-grow: 1;
+}
+
+.task-name {
+  font-weight: 500;
+  color: #1f2937;
+  margin: 0;
+}
+
+.task-name.completed {
+  text-decoration: line-through;
+  color: #6b7280;
+}
+
+.task-time {
+  font-size: 0.875rem;
+  color: #4b5563;
+  margin: 4px 0 0 0;
+}
+
+.complete-button {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.complete-button:hover {
+  border-color: #10b981;
+}
+
+.complete-button.completed {
+  background-color: #10b981;
+  border-color: #10b981;
+  color: white;
+}
+
+.complete-button.completed span {
+  font-size: 0.875rem;
+}
