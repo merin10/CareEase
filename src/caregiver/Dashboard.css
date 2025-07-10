@@ -1,0 +1,83 @@
+/* Layout */
+.planner-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  background: #f0f4f8;
+  padding: 30px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.planner-card {
+  background: #ffffff;
+  max-width: 500px;
+  width: 100%;
+  padding: 30px;
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading */
+.planner-card h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Input Area */
+.task-input {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.task-input input {
+  flex: 1;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+.task-input button {
+  padding: 10px 16px;
+  border: none;
+  background: #4f46e5;
+  color: white;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.task-input button:hover {
+  background: #3730a3;
+}
+
+/* Task List */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-list li {
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background-color: #f9fafb;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.task-list li:hover {
+  background-color: #e0e7ff;
+}
+
+.task-list li.completed {
+  text-decoration: line-through;
+  color: #6b7280;
+  background-color: #d1fae5;
+}
