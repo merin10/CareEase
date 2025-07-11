@@ -1,64 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect } from 'react';
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 
 const VoiceCommand = ({ onCommand }) => {
-  const [isListening, setIsListening] = useState(false);
-  const [message, setMessage] = useState("");
+  const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition();
 
-  const handleSpeech = () => {
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-    if (!SpeechRecognition) {
-      setMessage("❌ Speech Recognition not supported in your browser.");
+  useEffect(() => {
+    if (!browserSupportsSpeechRecognition) {
+      alert("Browser doesn't support speech recognition.");
       return;
     }
 
-    const recognition = new SpeechRecognition();
-    recognition.lang = "en-US";
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
-
-    recognition.onstart = () => {
-      setIsListening(true);
-      setMessage("🎤 Listening...");
-    };
-
-    recognition.onerror = (e) => {
-      setMessage(`Error: ${e.error}`);
-      setIsListening(false);
-    };
-
-    recognition.onend = () => {
-      setIsListening(false);
-    };
-
-    recognition.onresult = (event) => {
-      const text = event.results[0][0].transcript;
-      console.log("🗣 Recognized speech:", text);
-      setMessage(`✅ Heard: "${text}"`);
-
-      // Extract task if starts with "add task"
-      if (text.toLowerCase().startsWith("add task")) {
-        const taskText = text.replace(/add task/i, "").trim();
-        if (taskText) {
-          console.log("📝 Adding task:", taskText);
-          onCommand(taskText);
-        } else {
-          console.log("⚠️ No task content found.");
-        }
-      } else {
-        console.log("❌ Didn't start with 'add task'");
+    if (transcript && transcript.toLowerCase().startsWith("add task")) {
+      const task = transcript.slice(8).trim();
+      if (task) {
+        onCommand(task);
+        resetTranscript();
       }
-    };
-
-    recognition.start();
-  };
+    }
+  }, [transcript, browserSupportsSpeechRecognition, onCommand, resetTranscript]);
 
   return (
-    <div style={{ marginBottom: "20px" }}>
-      <button onClick={handleSpeech} style={{ padding: "10px 20px" }}>
-        🎤 {isListening ? "Listening..." : "Start Voice Input"}
-      </button>
-      <p>{message}</p>
+    <div>
+      <button onClick={SpeechRecognition.startListening}>Start Listening</button>
+      <p>{listening ? 'Listening...' : 'Click to start voice command'}</p>
     </div>
   );
 };

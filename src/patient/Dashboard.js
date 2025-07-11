@@ -1,4 +1,3 @@
-// src/patient/Dashboard.js
 import React, { useState } from 'react';
 import '../patient/dashboard.css';
 import VoiceCommand from '../components/VoiceCommand';
@@ -40,14 +39,25 @@ const Dashboard = () => {
   };
 
   const handleVoiceCommand = (taskText) => {
-    setTasks(prev => [...prev, { text: taskText, completed: false }]);
+    if (taskText && taskText.trim() !== '') {
+      const newTask = { text: taskText.trim(), completed: false };
+      setTasks(prev => [...prev, newTask]);
+
+      const speech = new SpeechSynthesisUtterance(`Task added: ${taskText}`);
+      window.speechSynthesis.speak(speech);
+    }
+  };
+
+  const handleMoodSelect = (mood) => {
+    setSelectedMood(mood);
+    const message = `I'm feeling ${mood.label} today!`;
+    const utterance = new SpeechSynthesisUtterance(message);
+    speechSynthesis.speak(utterance);
   };
 
   return (
     <main className="main-container">
       <div className="dashboard">
-
-        {/* Welcome */}
         <div className="welcome-banner">
           <h2>Hello! 👋</h2>
           <p>How are you feeling today?</p>
@@ -65,7 +75,7 @@ const Dashboard = () => {
                   backgroundColor: selectedMood?.emoji === mood.emoji ? mood.color : '#f9f9f9',
                   borderColor: selectedMood?.emoji === mood.emoji ? '#007bff' : '#ccc'
                 }}
-                onClick={() => setSelectedMood(mood)}
+                onClick={() => handleMoodSelect(mood)}
               >
                 <div className="emoji">{mood.emoji}</div>
                 <div>{mood.label}</div>
@@ -128,11 +138,16 @@ const Dashboard = () => {
         {/* Highlights */}
         <section className="section">
           <h3>Today's Highlights ✨</h3>
-          <div className="highlight-card">🌅 <div><b>Good Morning!</b><p>Start your day with energy!</p></div></div>
-          <div className="highlight-card">💊 <div><b>Medicine Reminder</b><p>Don’t forget your medicine!</p></div></div>
-          <div className="highlight-card">🎨 <div><b>Activity Time</b><p>Fun activity today!</p></div></div>
+          <div className="highlight-card">
+            🌅 <div><b>Good Morning!</b><p>Start your day with energy!</p></div>
+          </div>
+          <div className="highlight-card">
+            💊 <div><b>Medicine Reminder</b><p>Don’t forget your medicine!</p></div>
+          </div>
+          <div className="highlight-card">
+            🎨 <div><b>Activity Time</b><p>Fun activity today!</p></div>
+          </div>
         </section>
-
       </div>
     </main>
   );
