@@ -1,5 +1,7 @@
+// src/patient/Dashboard.js
 import React, { useState } from 'react';
-import './dashboard.css';
+import '../patient/dashboard.css';
+import VoiceCommand from '../components/VoiceCommand';
 
 const Dashboard = () => {
   const [selectedMood, setSelectedMood] = useState(null);
@@ -37,6 +39,10 @@ const Dashboard = () => {
     setNewTask('');
   };
 
+  const handleVoiceCommand = (taskText) => {
+    setTasks(prev => [...prev, { text: taskText, completed: false }]);
+  };
+
   return (
     <main className="main-container">
       <div className="dashboard">
@@ -71,6 +77,12 @@ const Dashboard = () => {
               I'm feeling {selectedMood.label} today! {selectedMood.emoji}
             </div>
           )}
+        </section>
+
+        {/* Voice Command */}
+        <section className="section">
+          <h3>🎤 Add Task by Voice</h3>
+          <VoiceCommand onCommand={handleVoiceCommand} />
         </section>
 
         {/* Task Section */}
